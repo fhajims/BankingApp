@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:id="@+id/idForContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_gravity="end">
+    <TextView
+        android:id="@+id/incomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Income: $0.00"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:id="@+id/expenseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Expenses: $0.00"
+        android:layout_below="@id/incomeText"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="70dp"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/addIncomeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Income"
+        android:layout_below="@id/idForContainer"
+        android:layout_marginTop="32dp"/>
+
+    <Button
+        android:id="@+id/addExpenseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Expense"
+        android:layout_below="@id/addIncomeButton"
+        android:layout_marginTop="16dp"/>
+
+ <!--   <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your savings"
+        android:inputType="text"
+        android:height = "70dp"
+        android:layout_below="@id/addExpenseButton"
+        android:layout_marginTop="30dp"
+        />
+
+        -->
+
+
+
+   <!-- <Button
+        android:id="@+id/editCustomButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="editCustom"
+        android:layout_below="@id/editText"
+        android:layout_marginTop="16dp"/> -->
+
+    <ListView
+        android:id="@+id/categoryListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/addCategoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AddCategory"
+        android:layout_below = "@id/addExpenseButton"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom = "30dp"/>
+    <!--  android:layout_below="@id/editText" -->
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textyinputty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter a category"
+        android:layout_below="@id/addCategoryButton">
+        <!--android:imeOptions="actionDone"-->
+
+
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editThisText"
+            android:layout_below="@id/addCategoryButton"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InComeAndExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your savings"
+        android:layout_below="@id/textyinputty"
+        android:inputType = "number"
+        >
+
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextInputIncomeandExpense"
+            android:layout_below="@id/addCategoryButton"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+</RelativeLayout>
