@@ -34,6 +34,7 @@
     import java.util.TimerTask
     import at.fh.js.ims.banking.MyFunctions
     import android.media.MediaPlayer
+    import android.text.InputType
 
 
     fun hideKeyboard(activity: Activity) {
@@ -106,6 +107,8 @@
             //Fill Smileygoodboy list for DialogFragments
             listOfSavingDialogFragments.add(DialogFragment())
 
+
+
             val imageViewSmiley = findViewById<ImageView>(R.id.imageView)
             val animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
             val idForContainer: LinearLayout = findViewById<LinearLayout>(R.id.idForContainer)
@@ -142,7 +145,6 @@
 
 
 
-
                 addCategoryButton.setOnClickListener {
                 hideKeyboard(this)
                 addCategoryButton.visibility = View.GONE
@@ -155,10 +157,6 @@
                 textyInputty.visibility = View.GONE
                 idForContainer.visibility = View.GONE
                 FormforInputandExpense.visibility = View.GONE
-
-
-
-
                 categoryListView.visibility = View.VISIBLE
 
                 var addable: Boolean = true
@@ -181,6 +179,7 @@
                         )
                     )
                     updateListView()
+                    // A new Category has been created
                     toast.show()
 
 
@@ -271,7 +270,6 @@
                 // Set the Boolean to false to prevent Dialog from showing up when input is empty
                 expensesEmptyInput = true
                 val dialog = NoEmptyInputs()
-
                 dialog.show(supportFragmentManager, "NoemptyInputs")
                 GlobalScope.launch(Dispatchers.Main) {
                     delay(2000)
@@ -315,8 +313,20 @@
             }
 
         //Some Filter
+            val decimalFilter = InputFilter { source, start, end, dest, dstart, dend ->
+                val input = dest.toString().substring(0, dstart) + source.toString() + dest.toString().substring(dend)
+                val inputWithDot = input.replace(",", ".") // Replace comma with dot if needed
+                val pattern = Regex("^[0-9]+(\\.[0-9]{0,1})?\$")
 
-            val filter = InputFilter { source, start, end, _, _,_ ->
+                if (pattern.matches(inputWithDot)) {
+                    null
+                } else {
+                    ""
+                }
+            }
+
+
+      /*      val filter = InputFilter { source, start, end, _, _,_ ->
                 for (i in start until end) {
                     if (!Character.isDigit(source[i])) {
                         return@InputFilter ""
@@ -325,21 +335,21 @@
                 null
             }
 
+            */
 
-
-            FormforInputandExpense.filters = arrayOf(filter)
+            FormforInputandExpense.filters = arrayOf(decimalFilter)
 
             // Text change listener
-            FormforInputandExpense.addTextChangedListener(object : TextWatcher {
+          /*  FormforInputandExpense.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    var a = s
+
                 }
 
                 override fun afterTextChanged(editable: Editable?) {
                     val input = editable.toString()
-                    val numericInput = input.replace("[^0-9.]".toRegex(), "")
+                    val numericInput = input.replace("[^0-9](?![0-9])".toRegex(), "")
 
                     // Update the EditText with the numeric input
                     if (editable.toString() != numericInput) {
@@ -354,7 +364,7 @@
 
 
 
-                })
+                })     */
         }
                 // Function to update the text Views
 
