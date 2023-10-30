@@ -247,7 +247,7 @@
     }
         // Expense Button where the Expense is added
         addExpenseButton.setOnClickListener {
-            MyFunctions.playNo(this@MainActivity)
+            //MyFunctions.playNo(this@MainActivity)
             // make Boolean to prevent DialogFragment from appearing always.
             var expensesEmptyInput : Boolean = false
 
@@ -427,7 +427,7 @@
             //Show the smiley :)
             if (incomeEmptyInput == false) {
                 Toast.makeText(this, "Income has been added", Toast.LENGTH_SHORT).show()
-                MyFunctions.playSkibididopdop(this)
+                //MyFunctions.playSkibididopdop(this)
                 val dialog = CustomDialogFragment()
                 dialog.show(supportFragmentManager, "CustomDialogFragment")
                 GlobalScope.launch(Dispatchers.Main) {
